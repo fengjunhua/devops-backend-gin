@@ -1,0 +1,7 @@
+info:
+  contact: {}
+  description: k8s管理平台
+  title: k8s管理项目
+  version: "1.0"
+paths: {}
+swagger: "2.0"

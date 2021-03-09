@@ -1,0 +1,10 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "k8s管理平台",
+        "title": "k8s管理项目",
+        "contact": {},
+        "version": "1.0"
+    },
+    "paths": {}
+}
