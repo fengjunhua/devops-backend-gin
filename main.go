@@ -15,6 +15,7 @@ func main() {
 	router := gin.Default()
 	routers.LoadTagRouters(router)
 	routers.LoadK8sRouters(router)
+	routers.LoadMysqlRouters(router)
 	routers.LoadLinuxCmdRouters(router)
 	router.LoadHTMLGlob("views/*")
 	url := ginSwagger.URL("http://localhost:8080/swagger/doc.json")
