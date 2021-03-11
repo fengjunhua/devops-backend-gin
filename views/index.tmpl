@@ -28,8 +28,40 @@
 
     </router-view>
 </div>
-
-
-
+<div id="ap">
+			<div class="tab">
+				<div v-for="(item,index) in navlist" :class="[currentKey == index ? 'activeClass' : '', 'tabitems']" :data-index="index"
+				 :data-id="item.id" @click="tabclick(index)">
+					{{item}}
+					<div class="showline" v-if="currentKey == index"></div>
+				</div>
+			</div>
+</div>
+<script type="text/javascript">
+			var app = new Vue({
+				el: '#ap',
+				data: {
+					currentKey: 0,
+					navlist: ["导航栏1", "导航栏2", "导航栏3"]
+				},
+				mounted() {
+                    //加载load监听
+					window.addEventListener('load', function() {
+					})
+                    //滚动监听
+					window.addEventListener("scroll", this.scrollBottom, true);
+				},
+				methods: {
+					tabclick(index) {
+                        //在此判断同一个导航不可重复点击
+						if (index != this.currentKey) {
+							this.currentKey = index;
+						}
+					},
+                    scrollBottom(){
+                        console.log("我滚动了")
+                    }
+			}})
+</script>
 </body>
 </html>
