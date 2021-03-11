@@ -13,11 +13,15 @@ import (
 //@description k8s管理平台
 func main() {
 	router := gin.Default()
+	router.Delims("[[", "]]")
 	routers.LoadTagRouters(router)
 	routers.LoadK8sRouters(router)
 	routers.LoadMysqlRouters(router)
 	routers.LoadLinuxCmdRouters(router)
-	router.LoadHTMLGlob("views/*")
+	routers.LoadUsersRouters(router)
+	routers.LoadViewsRouters(router)
+	router.LoadHTMLFiles("views/index.tmpl","views/user/userList.tmpl")
+	//router.LoadHTMLGlob("views/user/userList.tmpl")
 	url := ginSwagger.URL("http://localhost:8080/swagger/doc.json")
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
 	router.Run()

@@ -9,7 +9,7 @@ import (
 func ExecLinuxCommand(c *gin.Context) {
 	result := cmd.LinuxExec()
 	//c.String(http.StatusOK,result)
-	c.HTML(200, "index.html", gin.H{
+	c.HTML(200, "table.html", gin.H{
 		"title": result,
 	})
 }

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+<!--
+<div id="app">
+    <p>input 元素：</p>
+    <input v-model="message" placeholder="编辑我……">
+    <p>消息是: {{ message }}</p>
+
+    <p>textarea 元素：</p>
+    <p style="white-space: pre">{{ message2 }}</p>
+    <textarea v-model="message2" placeholder="多行文本输入……"></textarea>
+
+    <table>
+        <tr>
+            <th>用户名</th>
+            <th>邮箱</th>
+            <th>性别</th>
+            <th>省份</th>
+            <th>爱好</th>
+            <th>操作</th>
+        </tr>
+        <tr v-for="item in list">
+
+            <td>{{item.username}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.sex}}</td>
+            <td>{{item.province}}</td>
+            <td>{{item.hobby}}</td>
+        </tr>
+    </table>
+</div>
+
+
+-->
+
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    message: 'Runoob',
+	message2: '菜鸟教程\r\nhttp://www.runoob.com',
+	items: [
+        {name:"蔡",id:"1"},
+        {name:"冯",id:"2"},
+	],
+	list: [
+                {
+                    username: 'aaaaa',
+                    email: '123@qq.com',
+                    sex: '男',
+                    province: '北京市',
+                    hobby: ['篮球', '读书', '编程']
+                },
+                {
+                    username: 'bbbbb',
+                    email: 'bbbbbbb@163.com',
+                    sex: '女',
+                    province: '河北省',
+                    hobby: ['弹琴', '读书', '插画']
+                },
+                {
+                    username: 'aaabb',
+                    email: 'abababab@qq.com',
+                    sex: '女',
+                    province: '重庆市',
+                    hobby: ['篮球']
+                },
+                {
+                    username: 'cccccc',
+                    email: '123@qq.com',
+                    sex: '男',
+                    province: '北京市',
+                    hobby: ['篮球', '读书', '编程']
+                },
+                {
+                    username: 'dddddd',
+                    email: 'bbbbbbb@163.com',
+                    sex: '女',
+                    province: '河北省',
+                    hobby: ['弹琴', '读书', '插画']
+                },
+                {
+                    username: 'eeeee',
+                    email: 'abababab@qq.com',
+                    sex: '女',
+                    province: '重庆市',
+                    hobby: ['篮球']
+                }
+            ]
+  }
+})
+</script>
+
+</body>
+</html>
