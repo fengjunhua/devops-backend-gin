@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+<el-container>
+  <el-header>Header</el-header>
+  <el-container>
+    <el-aside width="200px">Aside</el-aside>
+    <el-main>Main</el-main>
+  </el-container>
+</el-container>
+
+<div id="header">
+<el-menu
+  :default-active="activeIndex2"
+  class="el-menu-demo"
+  mode="horizontal"
+  @select="handleSelect"
+  background-color="#545c64"
+  text-color="#fff"
+  active-text-color="#ffd04b">
+  <el-menu-item index="1">处理中心</el-menu-item>
+  <el-submenu index="2">
+    <template slot="title">我的工作台</template>
+    <el-menu-item index="2-1">选项1</el-menu-item>
+    <el-menu-item index="2-2">选项2</el-menu-item>
+    <el-menu-item index="2-3">选项3</el-menu-item>
+    <el-submenu index="2-4">
+      <template slot="title">选项4</template>
+      <el-menu-item index="2-4-1">选项1</el-menu-item>
+      <el-menu-item index="2-4-2">选项2</el-menu-item>
+      <el-menu-item index="2-4-3">选项3</el-menu-item>
+    </el-submenu>
+  </el-submenu>
+  <el-menu-item index="3" disabled>消息中心</el-menu-item>
+  <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+</el-menu>
+</div>
+
+
+<div id="app">
+    <h1>k8s管理系统</h1>
+    <h1> [[ .name ]] </h1>
+    <p>
+        <!-- use router-link component for navigation. -->
+        <!-- specify the link by passing the `to` prop. -->
+        <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
+        <router-link to="/kubernetes">kubernetes</router-link>
+        <router-link to="/devops">devops</router-link>
+        <router-link to="/harbor">ssh</router-link>
+        <router-link to="https://www.baidu.com">百度</router-link>
+        <router-link to="/devops">devops</router-link>
+        <router-link to="/harbor">ssh</router-link>
+    </p>
+    <!-- route outlet -->
+    <!-- component matched by the route will render here -->
+    <router-view>
+
+
+    </router-view>
+</div>
+<div id="ap">
+			<div class="tab">
+				<div v-for="(item,index) in navlist" :class="[currentKey == index ? 'activeClass' : '', 'tabitems']" :data-index="index"
+				 :data-id="item.id" @click="tabclick(index)">
+					{{item}}
+					<div class="showline" v-if="currentKey == index"></div>
+				</div>
+			</div>
+</div>
+<script type="text/javascript">
+			var header = new Vue( {
+			    el: '#header',
+                data() {
+                  return {
+                    activeIndex: '1',
+                    activeIndex2: '1'
+                  };
+                },
+                methods: {
+                  handleSelect(key, keyPath) {
+                    console.log(key, keyPath);
+                  }
+                }
+              }
+              )
+			var app = new Vue({
+				el: '#ap',
+				data: {
+					currentKey: 0,
+					navlist: ["导航栏1", "导航栏2", "导航栏3"]
+				},
+				mounted() {
+                    //加载load监听
+					window.addEventListener('load', function() {
+					})
+                    //滚动监听
+					window.addEventListener("scroll", this.scrollBottom, true);
+				},
+				methods: {
+					tabclick(index) {
+                        //在此判断同一个导航不可重复点击
+						if (index != this.currentKey) {
+							this.currentKey = index;
+						}
+					},
+                    scrollBottom(){
+                        console.log("我滚动了")
+                    }
+			}})
+
+
+</script>
+<style>
+  .el-header, .el-footer {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+  }
+
+  .el-aside {
+    background-color: #D3DCE6;
+    color: #333;
+    text-align: center;
+    line-height: 200px;
+  }
+
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+    line-height: 160px;
+  }
+
+  body > .el-container {
+    margin-bottom: 40px;
+  }
+
+  .el-container:nth-child(5) .el-aside,
+  .el-container:nth-child(6) .el-aside {
+    line-height: 260px;
+  }
+
+  .el-container:nth-child(7) .el-aside {
+    line-height: 320px;
+  }
+</style>
+</body>
+</html>
