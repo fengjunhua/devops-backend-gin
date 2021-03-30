@@ -7,23 +7,23 @@ import (
 
 func LoadK8sRouters(e *gin.Engine) {
 
-	K8sNodeRouters := e.Group("/api/v1/k8s/node")
+	K8sNodeRouters := e.Group("/api/v1/admin/node")
 	{
 		K8sNodeRouters.GET("/list",controllers.K8sListNode)
 		K8sNodeRouters.GET("/node/:nodeName",controllers.K8sGetNode)
 	}
 
-	K8sNamespaceRouters := e.Group("/api/v1/k8s/namespace")
+	K8sNamespaceRouters := e.Group("/api/v1/admin/namespace")
 	{
 		K8sNamespaceRouters.GET("/")
 
 	}
-	K8sServiceRouters := e.Group("/api/v1/k8s/service")
+	K8sServiceRouters := e.Group("/api/v1/admin/service")
 	{
 		K8sServiceRouters.GET("/pods",controllers.K8sGetPods)
 
 	}
-	K8sPodRouters := e.Group("/api/v1/k8s/pod")
+	K8sPodRouters := e.Group("/api/v1/admin/pod")
 	{
 		K8sPodRouters.GET("/pods",controllers.K8sGetPods)
 

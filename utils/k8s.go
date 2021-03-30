@@ -28,7 +28,7 @@ func K8sClient() *kubernetes.Clientset {
 	if err != nil {
 		panic(err.Error())
 	}else {
-		log.Println("connect k8s success!")
+		log.Println("connect admin success!")
 	}
 	fmt.Println(clientset)
 
