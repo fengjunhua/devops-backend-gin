@@ -1,26 +1,16 @@
-package controllers
+package k8s
 
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"github/fengjunhua/k8smanager/utils"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"k8s.io/client-go/kubernetes"
 	"net/http"
 )
-var(
-	clientset *kubernetes.Clientset
-)
-
-func init()  {
-	clientset = utils.K8sClient()
-}
-
 
 //1.对node节点的增删改查操作
-func K8sListNode(c *gin.Context) {
+func ListNode(c *gin.Context) {
 
-	nodes, err := clientset.CoreV1().Nodes().List(metav1.ListOptions{})
+	nodes, err := clientSet.CoreV1().Nodes().List(metav1.ListOptions{})
 	if err != nil {
 		panic(err)
 	}
@@ -31,11 +21,11 @@ func K8sListNode(c *gin.Context) {
 	}
 
 }
-func K8sGetNode(c *gin.Context) {
+func GetNode(c *gin.Context) {
 	//nodeName := c.Request.URL.Query().Get("nodeName")
 	nodeName := c.Param("nodeName")
 	fmt.Println(nodeName)
-    nodeInfo, err := clientset.CoreV1().Nodes().Get(nodeName, metav1.GetOptions{})
+    nodeInfo, err := clientSet.CoreV1().Nodes().Get(nodeName, metav1.GetOptions{})
     if err != nil {
         panic(err)
     }

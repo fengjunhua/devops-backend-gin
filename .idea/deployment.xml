@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="10.121.140.61" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="10.121.140.62" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
-      <paths name="10.121.140.61">
+      <paths name="10.121.140.62">
         <serverdata>
           <mappings>
             <mapping deploy="/k8smanager" local="$PROJECT_DIR$" web="/" />

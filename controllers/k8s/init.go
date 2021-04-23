@@ -1,4 +1,4 @@
-package utils
+package k8s
 
 import (
 	"flag"
@@ -10,30 +10,32 @@ import (
 	"path/filepath"
 	"runtime"
 )
+var(
+	kubeConfig *string
+	clientSet *kubernetes.Clientset
 
-func K8sClient() *kubernetes.Clientset {
-	var kubeconfig *string
+)
+
+func init()  {
 	if home := GetHomePath(); home != "" {
-		kubeconfig = flag.String("kubeconfig", filepath.Join(home, ".kube", "config"), "(optional) absolute path to the kubeconfig file")
+		kubeConfig = flag.String("kubeConfig", filepath.Join(home, ".kube", "config"), "(optional) absolute path to the kubeConfig file")
 	} else {
-		kubeconfig = flag.String("kubeconfig", filepath.Join("", ".kube", "config"), "absolute path to the kubeconfig file")
+		kubeConfig = flag.String("kubeConfig", filepath.Join("", ".kube", "config"), "absolute path to the kubeConfig file")
 	}
 	flag.Parse()
-	config, err := clientcmd.BuildConfigFromFlags("", *kubeconfig)
+	config, err := clientcmd.BuildConfigFromFlags("", *kubeConfig)
 	if err != nil {
-		panic(err.Error())
+		log.Println(err)
 	}
-	// creates the clientset
-	clientset, err := kubernetes.NewForConfig(config)
+	clientSet, err = kubernetes.NewForConfig(config)
 	if err != nil {
-		panic(err.Error())
+		log.Println(err)
 	}else {
 		log.Println("connect admin success!")
 	}
-	fmt.Println(clientset)
 
-	return clientset
 }
+
 
 func GetHomePath() string {
 	sysType := runtime.GOOS

@@ -2,30 +2,36 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github/fengjunhua/k8smanager/controllers"
+	"github/fengjunhua/k8smanager/controllers/k8s"
 )
 
-func LoadK8sRouters(e *gin.Engine) {
 
-	K8sNodeRouters := e.Group("/api/v1/admin/node")
-	{
-		K8sNodeRouters.GET("/list",controllers.K8sListNode)
-		K8sNodeRouters.GET("/node/:nodeName",controllers.K8sGetNode)
-	}
+func LoadK8sRouters(e *gin.Engine) {
 
 	K8sNamespaceRouters := e.Group("/api/v1/admin/namespace")
 	{
 		K8sNamespaceRouters.GET("/")
 
 	}
+	K8sNodeRouters := e.Group("/api/v1/k8s/node")
+	{
+		K8sNodeRouters.GET("/list", k8s.ListNode)
+		K8sNodeRouters.GET("/node/:nodeName", k8s.GetNode)
+	}
+
+	K8sDeploymentRouters := e.Group("/api/v1/k8s/deployment")
+	{
+		K8sDeploymentRouters.GET("/list", k8s.ListDeployments)
+		K8sDeploymentRouters.GET("/namespace/:namespace/deploymentName/:deploymentName", k8s.GetDeploymentsByName)
+	}
 	K8sServiceRouters := e.Group("/api/v1/admin/service")
 	{
-		K8sServiceRouters.GET("/pods",controllers.K8sGetPods)
+		K8sServiceRouters.GET("/pods", k8s.K8sGetPods)
 
 	}
 	K8sPodRouters := e.Group("/api/v1/admin/pod")
 	{
-		K8sPodRouters.GET("/pods",controllers.K8sGetPods)
+		K8sPodRouters.GET("/pods", k8s.K8sGetPods)
 
 	}
 
