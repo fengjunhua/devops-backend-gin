@@ -2,7 +2,7 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github/fengjunhua/k8smanager/controllers"
+	"github/fengjunhua/devops-backend-gin/controllers"
 )
 
 func LoadLoginRouters(e *gin.Engine) {

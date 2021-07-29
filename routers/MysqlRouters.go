@@ -2,7 +2,7 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github/fengjunhua/k8smanager/database/mysql"
+	"github/fengjunhua/devops-backend-gin/models/mysql"
 )
 
 func LoadMysqlRouters(e *gin.Engine) {

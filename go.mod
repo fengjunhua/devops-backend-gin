@@ -1,4 +1,4 @@
-module github/fengjunhua/k8smanager
+module github/fengjunhua/devops-backend-gin
 
 go 1.15
 

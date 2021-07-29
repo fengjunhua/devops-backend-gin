@@ -1,4 +1,4 @@
-package notice
+package mail
 
 import (
 	"gopkg.in/gomail.v2"

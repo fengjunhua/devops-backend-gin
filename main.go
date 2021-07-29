@@ -5,7 +5,7 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	_ "github.com/swaggo/gin-swagger/example/basic/docs"
-	"github/fengjunhua/k8smanager/routers"
+	"github/fengjunhua/devops-backend-gin/routers"
 	"net/http"
 )
 
