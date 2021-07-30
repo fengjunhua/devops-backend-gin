@@ -5,7 +5,6 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	_ "github.com/swaggo/gin-swagger/example/basic/docs"
-	"github/fengjunhua/devops-backend-gin/cmd"
 	"github/fengjunhua/devops-backend-gin/routers"
 	"net/http"
 )
@@ -22,7 +21,6 @@ func main() {
 	routers.LoadLoginRouters(router)
 	routers.LoadTagRouters(router)
 	routers.LoadK8sRouters(router)
-	routers.LoadLinuxCmdRouters(router)
 	routers.LoadUsersRouters(router)
 	routers.LoadViewsRouters(router)
 	//router.LoadHTMLFiles("views/user/userList.tmpl")
