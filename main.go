@@ -5,13 +5,14 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	_ "github.com/swaggo/gin-swagger/example/basic/docs"
+	"github/fengjunhua/devops-backend-gin/cmd"
 	"github/fengjunhua/devops-backend-gin/routers"
 	"net/http"
 )
 
-//@title k8s管理项目
+//@title devops-backend-gin
 //@version 1.0
-//@description k8s管理平台
+//@description devops项目后端系统
 func main() {
 	router := gin.Default()
 	router.Delims("[[", "]]")
@@ -21,7 +22,6 @@ func main() {
 	routers.LoadLoginRouters(router)
 	routers.LoadTagRouters(router)
 	routers.LoadK8sRouters(router)
-	routers.LoadMysqlRouters(router)
 	routers.LoadLinuxCmdRouters(router)
 	routers.LoadUsersRouters(router)
 	routers.LoadViewsRouters(router)
@@ -29,4 +29,5 @@ func main() {
 	url := ginSwagger.URL("http://localhost:8080/swagger/doc.json")
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
 	router.Run()
+
 }

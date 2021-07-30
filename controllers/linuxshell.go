@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github/fengjunhua/k8smanager/utils/cmd"
-	_ "github/fengjunhua/k8smanager/utils/cmd"
+	"github/fengjunhua/devops-backend-gin/internel/linux/cmd"
+	_ "github/fengjunhua/devops-backend-gin/internel/linux/cmd"
 )
 
 func ExecLinuxCommand(c *gin.Context) {
